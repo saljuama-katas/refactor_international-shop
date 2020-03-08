@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  database:
+    image: postgres:12
+    restart: always
+    environment:
+      POSTGRES_USER: local
+      POSTGRES_PASSWORD: local
+      POSTGRES_DB: shop
+    ports:
+    - "5432:5432"
+    volumes:
+    - internationalShopData:/var/lib/postgresql/data
+
+volumes:
+  internationalShopData:
