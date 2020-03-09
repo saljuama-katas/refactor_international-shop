@@ -5,27 +5,29 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-class RegionRepositoryTest extends IntegrationTest {
+class ContractRepositoryTest extends IntegrationTest {
 
-  @Autowired
-  private RegionRepository repository;
+  @Autowired private RegionRepository regionRepository;
+  @Autowired private ContractRepository repository;
 
   @AfterEach
   void tearDown() {
     repository.deleteAll();
+    regionRepository.deleteAll();
   }
 
   @Test
-  void canSaveANewRegion() {
+  void canSaveANewContract() {
     assertEquals(0L, repository.count());
 
-    Region newRegion = new Region("Barcelona", "08001,08002,08003,08004,08005");
-    repository.save(newRegion);
+    Region barcelona = regionRepository.save(new Region("Barcelona", "08001,08002"));
+    repository.save(new Contract(100L, barcelona, Category.MUSIC, 5, LocalDate.now().minusDays(10), null));
 
     assertEquals(1L, repository.count());
   }
-
 }
