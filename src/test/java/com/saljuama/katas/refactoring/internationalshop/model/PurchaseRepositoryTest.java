@@ -1,6 +1,6 @@
 package com.saljuama.katas.refactoring.internationalshop.model;
 
-import com.saljuama.katas.refactoring.internationalshop.IntegrationTest;
+import com.saljuama.katas.refactoring.internationalshop.PersistenceIntegrationTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-class PurchaseRepositoryTest extends IntegrationTest {
+class PurchaseRepositoryTest extends PersistenceIntegrationTest {
 
   @Autowired private RegionRepository regionRepository;
   @Autowired private ContractRepository contractRepository;

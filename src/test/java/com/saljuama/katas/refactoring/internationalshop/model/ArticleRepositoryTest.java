@@ -1,6 +1,6 @@
 package com.saljuama.katas.refactoring.internationalshop.model;
 
-import com.saljuama.katas.refactoring.internationalshop.IntegrationTest;
+import com.saljuama.katas.refactoring.internationalshop.PersistenceIntegrationTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-class ArticleRepositoryTest extends IntegrationTest {
+class ArticleRepositoryTest extends PersistenceIntegrationTest {
 
   @Autowired private RegionRepository regionRepository;
   @Autowired private ArticleRepository repository;
