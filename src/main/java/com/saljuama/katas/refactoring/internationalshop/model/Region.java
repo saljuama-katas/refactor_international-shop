@@ -1,16 +1,16 @@
 package com.saljuama.katas.refactoring.internationalshop.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "regions")
 @Data
+@With
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
+@AllArgsConstructor
 public class Region extends AuditableEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
