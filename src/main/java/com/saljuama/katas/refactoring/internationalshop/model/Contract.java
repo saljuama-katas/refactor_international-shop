@@ -16,7 +16,7 @@ public class Contract extends AuditableEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  private Long customerId;
+  private String customerId;
   @ManyToOne(fetch = FetchType.LAZY)
   private Region region;
   private Category category;
@@ -24,7 +24,7 @@ public class Contract extends AuditableEntity {
   private LocalDate startDate;
   private LocalDate endDate;
 
-  public Contract(Long customerId, Region region, Category category, Integer weeklyLimit, LocalDate startDate, LocalDate endDate) {
+  public Contract(String customerId, Region region, Category category, Integer weeklyLimit, LocalDate startDate, LocalDate endDate) {
     this.customerId = customerId;
     this.region = region;
     this.category = category;

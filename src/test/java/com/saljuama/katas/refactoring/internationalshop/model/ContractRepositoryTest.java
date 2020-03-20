@@ -26,7 +26,7 @@ class ContractRepositoryTest extends PersistenceIntegrationTest {
     assertEquals(0L, repository.count());
 
     Region barcelona = regionRepository.save(new Region("Barcelona", "08001,08002"));
-    repository.save(new Contract(100L, barcelona, Category.MUSIC, 5, LocalDate.now().minusDays(10), null));
+    repository.save(new Contract("customer1", barcelona, Category.MUSIC, 5, LocalDate.now().minusDays(10), null));
 
     assertEquals(1L, repository.count());
   }

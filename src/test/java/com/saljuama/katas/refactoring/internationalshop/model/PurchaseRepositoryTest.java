@@ -32,7 +32,7 @@ class PurchaseRepositoryTest extends PersistenceIntegrationTest {
 
     Region barcelona = regionRepository.save(new Region("Barcelona", "08001,08002"));
     Article rockCD = articleRepository.save(new Article("Rock CD", Category.MUSIC, "\\m/", barcelona));
-    Contract rockNRock = contractRepository.save(new Contract(100L, barcelona, Category.MUSIC, 5, LocalDate.now().minusDays(10), null));
+    Contract rockNRock = contractRepository.save(new Contract("customer1", barcelona, Category.MUSIC, 5, LocalDate.now().minusDays(10), null));
 
     repository.save(new Purchase(rockCD, rockNRock, Category.MUSIC, new BigDecimal("19.95")));
 

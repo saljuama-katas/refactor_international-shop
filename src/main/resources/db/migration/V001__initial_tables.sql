@@ -21,7 +21,7 @@ CREATE TABLE Articles
 CREATE TABLE Contracts
 (
     id                 SERIAL PRIMARY KEY,
-    customer_id        SERIAL      NOT NULL,
+    customer_id        VARCHAR(50) NOT NULL,
     region_id          SERIAL      NOT NULL REFERENCES Regions (id),
     category           VARCHAR(50) NOT NULL,
     weekly_limit       INT         NOT NULL,
