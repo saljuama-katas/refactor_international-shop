@@ -38,13 +38,6 @@ class RegionControllerTest extends ApiIntegrationTest {
 
   @Test
   void canListAllRegions() throws Exception {
-    when(repository.save(any(Region.class))).thenAnswer(invocation -> invocation.getArgument(0, Region.class).withId(1L));
-    mockMvc
-        .perform(post("/regions")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content("{ \"name\": \"Valencia\", \"postalCodes\": \"46001,46002,46034\" }")
-        );
-
     when(repository.findAll()).thenReturn(Collections.singletonList(new Region(1L, "Valencia", "46001,46002,46034")));
     mockMvc
         .perform(get("/regions"))
