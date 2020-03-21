@@ -1,8 +1,6 @@
 package com.saljuama.katas.refactoring.internationalshop.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -10,8 +8,10 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "contracts")
 @Data
+@With
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
+@AllArgsConstructor
 public class Contract extends AuditableEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

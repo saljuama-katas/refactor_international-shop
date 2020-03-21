@@ -30,9 +30,4 @@ public class RegionController {
         .body(repository.save(region));
   }
 
-//  @GetMapping("/{id}")
-//  public Optional<Region> getRegionById(@PathVariable("id") Long id) {
-//    return Optional.empty();
-//  }
-
 }
