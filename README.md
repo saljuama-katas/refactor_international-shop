@@ -3,6 +3,20 @@
 International Shop is a trading platform that enables users to buy and sell items, relieving them from the hassle
 of find the buyer for the article you want to sell, or find sellers if you are interested in buying.
 
+## Exercise
+
+The objective of this kata is to identify some design anti-patterns and perform some refactoring that will make the system more maintainable.
+
+Some references that might help:
+ - [Dependency Inversion principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle)
+
+
+### User stories in the backlog
+
+1. As a User, when I'm selling an article, I want to specify my postal code instead of a region ID, so I don't have to 
+know about the regions that exist in the system and it is easier for me to sell my articles.
+
+
 ## Pre-requisites
 
 * Java 11
