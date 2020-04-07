@@ -1,9 +1,6 @@
 package com.saljuama.katas.refactoring.internationalshop.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,8 +9,10 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "purchases")
 @Data
+@With
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
+@AllArgsConstructor
 public class Purchase extends AuditableEntity {
   @EmbeddedId
   private PurchaseId id = new PurchaseId();

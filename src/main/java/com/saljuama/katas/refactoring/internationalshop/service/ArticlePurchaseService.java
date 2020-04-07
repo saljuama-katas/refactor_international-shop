@@ -16,13 +16,15 @@ public class ArticlePurchaseService {
   private final PurchaseRepository purchaseRepository;
 
   public Optional<Purchase> distributeNewArticle(Article article) {
-    Article savedArticle = articleRepository.save(article);
-    Optional<Purchase> purchase = contractRepository
-        .findByRegion(savedArticle.getRegion())
+    return contractRepository
+        .findByRegion(article.getRegion())
         .stream()
         .findFirst()
-        .map(contract -> new Purchase(savedArticle, contract, savedArticle.getCategory(), new BigDecimal("1.50")));
-    purchase.ifPresent(p -> purchaseRepository.save(p));
-    return purchase;
+        .map(contract -> {
+          Article savedArticle = articleRepository.save(article);
+          Purchase purchase = new Purchase(savedArticle, contract, savedArticle.getCategory(), new BigDecimal("1.50"));
+          return purchaseRepository.save(purchase);
+        });
+
   }
 }

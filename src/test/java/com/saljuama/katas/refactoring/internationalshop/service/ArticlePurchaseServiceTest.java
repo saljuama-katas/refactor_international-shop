@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class ArticlePurchaseServiceTest {
@@ -32,12 +32,13 @@ class ArticlePurchaseServiceTest {
   void onNewArticleSellsItToACustomer() {
     Region region = new Region(1L, "Valencia", "46001,46002");
     Article article = new Article("RockCD", Category.MUSIC, "Awesome mix", region);
-    when(articleRepository.save(article)).thenReturn(article.withId(1L));
     when(contractRepository.findByRegion(region)).thenReturn(Arrays.asList(
         new Contract(1L, "customer1", region, Category.MUSIC, 10, LocalDate.now().minusDays(1), null),
         new Contract(2L, "customer2", region, Category.MUSIC, 10, LocalDate.now().minusDays(1), null),
         new Contract(3L, "customer3", region, Category.MUSIC, 10, LocalDate.now().minusDays(1), null)
     ));
+    when(articleRepository.save(any())).thenAnswer(invocation -> invocation.getArgument(0, Article.class).withId(1L));
+    when(purchaseRepository.save(any())).thenAnswer(invocation -> invocation.getArgument(0, Purchase.class));
 
     Optional<Purchase> result = service.distributeNewArticle(article);
 
@@ -53,15 +54,16 @@ class ArticlePurchaseServiceTest {
   }
 
   @Test
-  void onNewArticleWhenNoCustomersAvailableDoesNotCreatePurchase() {
+  void onNewArticleWhenNoCustomersAvailableDoesNotCreatePurchaseAndDiscardTheArticle() {
     Region region = new Region(1L, "Valencia", "46001,46002");
     Article article = new Article("RockCD", Category.MUSIC, "Awesome mix", region);
-    when(articleRepository.save(article)).thenReturn(article.withId(1L));
     when(contractRepository.findByRegion(region)).thenReturn(Collections.emptyList());
 
     Optional<Purchase> result = service.distributeNewArticle(article);
 
-    result.ifPresent(purchase -> fail("Should not have sold it to a customer"));
+    assertTrue(result.isEmpty());
+    verify(articleRepository, never()).save(any());
+    verify(purchaseRepository, never()).save(any());
   }
 
 }
