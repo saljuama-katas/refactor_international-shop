@@ -25,18 +25,14 @@ Some references that might help:
 
 1. As a User, when I'm selling an article, I want to specify my postal code instead of a region ID, so I don't have to 
 know about the regions that exist in the system and it is easier for me to sell my articles.
-
-2a. As a Customer, I want to be able to return an article if it was in bad conditions or if it was not really matching
+2. As a Customer, I want to be able to return an article if it was in bad conditions or if it was not really matching
 the description of the article. 
-
-2b. As an Administrator, I want to review and approve the requests for returning back the articles from customers, so 
+3. As an Administrator, I want to review and approve the requests for returning back the articles from customers, so 
 I can avoid customers fraudulent behaviour of just using my platform to contact with users for free
-
-3. As a User, when I try to sell an article but there were no buyers, I want to maintain the article in the shop until:
-   a. a new buyer in the platform buys it
-   b. I decide to cancel the publication
-
-4. As a Customer who signs a new contract, I want to automatically purchase available unsold products if they match 
+4. As a User, when I try to sell an article but there were no buyers, I want to maintain the article in the shop until:
+   (A) a new buyer in the platform buys it
+   (B) I decide to cancel the publication
+5. As a Customer who signs a new contract, I want to automatically purchase available unsold products if they match 
 the criteria specified in my contract
 
 
